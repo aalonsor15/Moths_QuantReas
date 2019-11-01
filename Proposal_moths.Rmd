@@ -2,24 +2,27 @@
 title: "Vegetation drivers of moth assemblages within a tropical agricultural landscape"
 author: "Aura Alonso-Rodriguez, Lily Shapiro and Ben Camber"
 date: "10/30/2019"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
-## Background
+### Background
 
 Land use change, and specifically agricultural expansion, is recognized globally as one of the major drivers of biodiversity loss. The expansion of African oil palm is specifically threatening, since the tropical areas suitable for oil palm are particularly rich in biodiversity and endemism. There is vast evidence of the severe impacts of oil palm expansion in Southeast Asia, where more than 85% of oil palm is cultivated, mostly by means of primary and secondary forest destruction. Yet due to increasing food and biodiesel demands, oil palm is becoming a major threat in the Neotropics as well. Countries like Costa Rica, Colombia, Guatemala and Brazil, are experiencing increasing land conversion to oil palm, turning previously heterogeneous agricultural matrices into extensive monocultures that support significantly less biodiversity.
 
-The South Pacific region of Costa Rica has grown in oil palm area during the last two decades. Evidence has already shown significant decreases in amphibians, reptiles, bats and insect diversity within these plantations, when compared to adjacent primary forests. In Alonso-Rodríguez et al (2017), moth assemblages were seen to severely degrade in oil palm plantations when compared to primary and young secondary forests. Two moth taxa (Geometridae and Erebidae-Arctiinae, Lepidoptera) showed similar distributions along the disturbance gradient, which was partially explained by plant diversity and vegetation structure. However, which vegetation parameters had a bigger influence on observed distribution patterns and how they differ between moth taxa was not further explored by the authors. Taking into account the differences in life history between geometrid and arctiine moths (such as host-plant preferences, chemical defenses, camouflage, flight capacity, among others), their responses to structural or floristic vegetation features could help us better explore the potential of predicting diversity and turnover rates of these groups in human-dominated landscapes.
+The South Pacific region of Costa Rica has grown in oil palm area during the last two decades. Evidence has already shown significant decreases in amphibians, reptiles, bats and insect diversity within these plantations, when compared to adjacent primary forests. In Alonso-Rodriguez et al (2017), moth assemblages were seen to severely degrade in oil palm plantations when compared to primary and young secondary forests. Two moth taxa (Geometridae and Erebidae-Arctiinae, Lepidoptera) showed similar distributions along the disturbance gradient, which was partially explained by plant diversity and vegetation structure. However, which vegetation parameters had a bigger influence on observed distribution patterns and how they differ between moth taxa was not further explored by the authors. Taking into account the differences in life history between geometrid and arctiine moths (such as host-plant preferences, chemical defenses, camouflage, flight capacity, among others), their responses to structural or floristic vegetation features could help us better explore the potential of predicting diversity and turnover rates of these groups in human-dominated landscapes.
 
-## Study Questions
+### Study Questions
 
 1. Are structural or floristic features superior predictors of small-scale gradients in moth species composition in relation to land-use intensity?
 2. Are responses similar in the two moth groups, despite some major differences in prime life-history traits of these moth taxa?
 
-## Justification
+### Justification
 
 Conservation efforts are made more efficient and effective by understanding quantitative relationships in complex ecological systems. Therefore, isolating important variables such as the most vulnerable life stage of an endangered species, the most ecotoxic pollutants contaminating a wetland, or the least resilient taxon in a disturbed ecosystem is critical to making useful change. African oil palm plantations in the neotropics represent an immense challenge to the stability of tropical rainforest ecology. In particular, insects in and around these plantations are easily disturbed by the deforestation and establishment of the african oil palm monoculture. Their complex life cycles and trophic specificity are often ill-suited for large spatial-scale changes in canopy cover, plant species diversity, and vertical complexity. Within class Insecta, however, some taxa are more resilient than others. Geometridae and Arctiinae (Lepidoptera) share much of their ranges worldwide, but have very different life history strategies. We predict that modelling will reveal that vegetation variables will have drastically different effects on the success of these taxa. Establishing that superficially similar taxa have inherently different responses to disturbance will be crucial for informing conservation policy not only in the case of Geometridae and Arctiinae, but in many other cryptic or non-charismatic taxa worldwide. 
 
-## Data
+### Data
 
 * Moths
   + Species abundance matrix for both Arctiinae and Geometridae, per study site and date of collection.
@@ -27,25 +30,25 @@ Conservation efforts are made more efficient and effective by understanding quan
 
 * Vegetation parameters
   + Tree species abundance matrix per study site
-  + Plant species richness ≥ 2cm DBH
-  + Vegetation density ≥ 2cm DBH
-  + Plant species diversity (Fisher’s alpha index)
+  + Plant species richness 
+  + Vegetation density
+  + Plant species diversity (Fisher's alpha index)
   + Understory density 
   + Understory complexity
   + Undergrowth cover
   + Vertical complexity
   + Canopy cover
-  + Tree basal area ≥ 10cm DBH
+  + Tree basal area
 
-## Proposed methods
+### Proposed methods
 
-* Generation of Multiple Linear Regression and Redundancy Analysis models to relate moth diversity to floristic diversity and vegetation structure across habitats using PC’s (from initial PCA) generated from vegetation structure and diversity data as predictor variables in the MLR and RA
+* Generation of Multiple Linear Regression and Redundancy Analysis models to relate moth diversity to floristic diversity and vegetation structure across habitats using PC's (from initial PCA) generated from vegetation structure and diversity data as predictor variables in the MLR and RA
 
 * Utilize alpha diversity calculations from species data (from each geometrid and arctiine data sets). 
 
 * Components of MLR models determined via a-priori approach/ from the calculated statistical significance of PC components for floristic and structural elements independently (?). 
 
-* MLR Models can then be compared via AIC (Akaike’s Information Criterion). 
+* MLR Models can then be compared via AIC (Akaike's Information Criterion). 
 
 * Simplified AIC methodologies could also be utilized- models of singular floristic or structural elements or combinations between the two could be chosen a-priori and the quality of that models could be assessed using either AIC/BIC or related methods.
 
