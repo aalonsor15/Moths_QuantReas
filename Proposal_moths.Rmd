@@ -53,4 +53,8 @@ Conservation efforts are made more efficient and effective by understanding quan
 * Simplified AIC methodologies could also be utilized- models of singular floristic or structural elements or combinations between the two could be chosen a-priori and the quality of that models could be assessed using either AIC/BIC or related methods.
 
 * Data available on vegetation structure in a variety of site types includes vegetation density, understory density, understory complexity, undergrowth cover, vertical complexity, canopy cover, and tree basal area. Floristic features for vegetation includes plant species richness and plant species diversity. Site type (FI, FM, YSF, and OPP) could also be integrated into the models and tested for significance in explaining the diversity of the two groups.
+
+
+Reminder: Add references
+
  
