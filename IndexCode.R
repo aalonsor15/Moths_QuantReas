@@ -90,6 +90,7 @@ plot(PlantsOrd1$points, col = sites$Site.Code)
 ordiellipse(PlantsOrd1, sites$Site.Code, display = "sites", kind = "sd", label = T)
 NMDS = data.frame(MDS1 = PlantsOrd1$points[,1], MDS2 = PlantsOrd1$points[,2],group=sites$Site.Code)
 
-
-
+#Extract NMDS axis scores
+nms_axis <- scores(PlantsOrd, choices=c(1,2))
+write.table(nms_axis, file="Plant_nms_axis.csv",sep=",",row.names=F)
 
