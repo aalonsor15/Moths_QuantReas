@@ -60,6 +60,10 @@ Reminder: Add references
 setwd("C:/Users/PC/Documents/R/Moths_QuantReas")
 
 Mothveg <- read.csv('Mothveg.csv')
-correlations <- cor(Mothveg,use="complete.obs", method="pearson")
+PCorr <- cor(Mothveg,use="complete.obs", method = "pearson")
+SCorr <- cor(Mothveg,use="complete.obs", method = "spearman")
+
+corrplot(PCorr,method="square",order="hclust",type="upper",main="Pearson Correlation")
+corrplot(SCorr,method="square",order="hclust",type="upper",main="Spearman Correlation")
 ```
-We used the Pearson and Kendall methods to determine correlation between the vegetation parameters. We determined that a floristic model could safely include the following parameters since they lack strong correlations: plant species diversity, vegetation density, and a plant composition matrix. We also found that a structural model could include the following uncorrelated parameters: understory complexity, canopy coverage, and vertical complexity. 
+We used the Pearson and Spearman methods to determine correlation between the vegetation parameters. We determined that a floristic model could safely include the following parameters since they lack strong correlations: plant species diversity, vegetation density, and a plant composition matrix. We also found that a structural model could include the following  parameters: understory complexity, canopy coverage, and vertical complexity.
