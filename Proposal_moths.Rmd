@@ -67,3 +67,67 @@ corrplot(PCorr,method="square",order="hclust",type="upper",main="Pearson Correla
 corrplot(SCorr,method="square",order="hclust",type="upper",main="Spearman Correlation")
 ```
 We used the Pearson and Spearman methods to determine correlation between the vegetation parameters. We determined that a floristic model could safely include the following parameters since they lack strong correlations: plant species diversity, vegetation density, and a plant composition matrix. We also found that a structural model could include the following  parameters: understory complexity, canopy coverage, and vertical complexity.
+
+
+
+## Calculating Fisher's alpha Diversity Index for Geometridae and Arctiinae
+
+```{r}
+G_matrix <- read.csv('Geo_site_matrix.csv')
+G_fisher <- fisher.alpha(G_matrix) 
+G_fisher <- as.data.frame(G_fisher)
+
+A_matrix <- read.csv('Arc_site_matrix.csv')
+A_fisher <- fisher.alpha(A_matrix) #Error: doesn't run even thought its the same code as for geometrids
+A_fisher <- as.data.frame(A_fisher)
+
+#export data to csv
+write.table(G_fisher, file="G_div.csv",sep=",",row.names=F)
+write.table(A_fisher, file="A_div.csv",sep=",",row.names=F)
+```
+
+
+# Extracting the NMDS axis coordinates for the plant species matrix, to used as proxy for plant species composition
+
+```{r}
+plants <- read.csv("Plant_matrix.csv")
+sites <- read.csv("SiteCode.csv")
+habitat <- read.csv("Habitat.csv")
+
+install.packages("MASS")
+library("MASS")
+
+PlantsOrd <- metaMDS(plants,distance = "bray", k = 3,trymax=100)
+PlantsOrd
+plot(PlantsOrd)
+
+cols <- c("red", "blue", "pink", "green")
+plot(PlantsOrd, type = "n")
+points(PlantsOrd, col = cols[habitat$Habitat], pch = 16)
+legend("topright", legend=levels(habitat$Habitat), col=cols, pch = 16)
+
+cols <- c("red", "blue", "pink", "green")
+plot(PlantsOrd, type = "n")
+points(PlantsOrd, col = cols[sites$Site.Code], pch = 16)
+legend("topright", legend=levels(sites$Site.Code), col=cols, pch = 16)
+
+stressplot(PlantsOrd)
+
+################## ggplot ###################
+
+install.packages("ggplot2")
+install.packages("Rcpp")
+library("ggplot2")
+require("ggplot2")
+
+set.seed(201)
+PlantsOrd1 <- metaMDS(plants)
+plot(PlantsOrd1$points, col = sites$Site.Code)
+ordiellipse(PlantsOrd1, sites$Site.Code, display = "sites", kind = "sd", label = T)
+NMDS = data.frame(MDS1 = PlantsOrd1$points[,1], MDS2 = PlantsOrd1$points[,2],group=sites$Site.Code)
+
+#Extract NMDS axis scores
+nms_axis <- scores(PlantsOrd, choices=c(1,2))
+write.table(nms_axis, file="Plant_nms_axis.csv",sep=",",row.names=F)
+```
+
