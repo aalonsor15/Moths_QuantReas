@@ -107,6 +107,8 @@ write.table(nms_axis, file="Plant_nms_axis.csv",sep=",",row.names=F)
 
 ```{r}
 ##Arctiid Diversity (Fisher's alpha) Structural Model
+covar_moth <- read.csv("covar_moth.csv")
+
 Arctiid.structural <- as.formula(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex)
 Arctiid.structural.model <- glm(Arctiid.structural, data=covar_moth)
 summary(Arctiid.structural.model)
