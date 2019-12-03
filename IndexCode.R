@@ -94,3 +94,208 @@ NMDS = data.frame(MDS1 = PlantsOrd1$points[,1], MDS2 = PlantsOrd1$points[,2],gro
 nms_axis <- scores(PlantsOrd, choices=c(1,2))
 write.table(nms_axis, file="Plant_nms_axis.csv",sep=",",row.names=F)
 
+###
+covar_moth
+plot(Code~Geometrid_FisherIndex~VegDiversity, data = covar_moth)
+abline(lm(Geometrid_FisherIndex~CanopyCover, data = covar_moth))
+
+####### testing for spatial autocorrelation ##########
+#method taken from: https://stats.idre.ucla.edu/r/faq/how-do-i-fit-a-variogram-model-to-my-spatial-data-in-r-using-regression-commands/
+
+install.packages("nlme")
+library(nlme)
+require(nlme)
+
+covar_moth <- read.csv("covar_moth.csv")
+dummy <- rep(1, 20)
+spdata <- cbind(covar_moth, dummy)
+null.model <- lme(fixed = Arctiine_FisherIndex ~ 1, data = covar_moth, random = ~ 1 | dummy)
+summary(null.model)
+
+cs1Exp <- corExp(1, form = ~ Lat + Long)
+cs1Exp <- Initialize(cs1Exp, covar_moth)
+corMatrix(cs1Exp)
+
+exp.sp <- update(null.model, correlation = corExp(1, form = ~ Lat + Long), method = "ML")
+summary(exp.sp)
+
+
+
+##############################################################################################
+
+install.packages("lme4")
+library(lme4)
+  
+##Arctiid Diversity (Fisher's alpha) Structural Model
+Arctiid.structural <- as.formula(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat))
+Arctiid.structural.model <- lmer(Arctiid.structural, data=covar_moth)
+summary(Arctiid.structural.model)
+
+##Geometrid Diversity (Fisher's alpha) Structural Model
+Geometrid.structural <- as.formula(Geometrid_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat))
+Geometrid.structural.model <- lmer(Geometrid.structural, data=covar_moth)
+summary(Geometrid.structural.model)
+
+##Arctiid Diversity (Fisher's alpha) Floristic Model
+Arctiid.floristic <- as.formula(Arctiine_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat))
+Arctiid.floristic.model <- lmer(Arctiid.floristic, data=covar_moth)
+summary(Arctiid.floristic.model)
+
+##Geometrid Diversity (Fisher's alpha) Floristic Model
+Geometrid.floristic <- as.formula(Geometrid_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat))
+Geometrid.floristic.model <- lmer(Geometrid.floristic, data=covar_moth)
+summary(Geometrid.floristic.model)
+
+
+##Arctiid Diversity (Fisher's alpha) Structural Model
+Arctiid.structural <- as.formula(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat))
+Arctiid.structural.model <- lmer(Arctiid.structural, data=covar_moth)
+summary(Arctiid.structural.model)
+
+
+f1 <- lmer(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth); summary(f1)
+
+f2 <- glmer(Geometrid_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log)); summary(f2)
+
+f3 <- lmer(Arctiine_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth); summary(f3)
+
+f4 <- glmer(Geometrid_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log)); summary(f4)
+
+fnull <- glmer(Geometrid_FisherIndex ~ 1 + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log)); summary(fnull)
+
+
+plot(log(Geometrid_FisherIndex)~VegDiversity, data=covar_moth)
+
+G.VDiv <- ggplot(covar_moth, aes(x=VegDiversity, y=Geometrid_FisherIndex)) +
+  geom_point(size=3, shape=19)+
+  geom_point()+
+  scale_colour_grey()+
+  # geom_text(aes(label=ifelse(rlw>30,as.character(zcta5),'')),hjust=0,vjust=0)+
+  theme(legend.position = "top")+
+  xlab("Vegetation Diversity") + ylab("Geometrid Diversity")
+
+G.NMDS1 <- ggplot(covar_moth, aes(x=NMDS1, y=Geometrid_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_point(aes(colour = factor(Habitat)))+
+  scale_colour_grey()+
+  # geom_text(aes(label=ifelse(rlw>30,as.character(zcta5),'')),hjust=0,vjust=0)+
+  theme(legend.position = "none")+
+  xlab("Vegetation Composition NMDS1") + ylab("Geometrid Diversity")
+
+install.packages("cowplot")
+library(cowplot)
+plot_grid(G.VDiv, G.NMDS1, ncol=2, nrow=1)
+
+####  for R Markdown  ####
+
+shapiro.test(covar_moth$Arctiine_FisherIndex)
+shapiro.test(covar_moth$Geometrid_FisherIndex)
+
+install.packages("fitdistrplus")
+library(fitdistrplus)
+
+descdist(covar_moth$Geometrid_FisherIndex)    
+descdist(covar_moth$Arctiine_FisherIndex)
+
+install.packages("lmerTest")
+library(lmerTest)
+
+##Geometrid Diversity (Fisher's alpha) Structural Model
+Geometrid.structural <- glmer(Geometrid_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log))
+summary(Geometrid.structural)
+
+##Arctiid Diversity (Fisher's alpha) Structural Model
+Arctiid.structural <- lmer(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth)
+summary(Arctiid.structural)
+
+##Geometrid Diversity (Fisher's alpha) Floristic Model
+Geometrid.floristic <- glmer(Geometrid_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log))
+summary(Geometrid.floristic)
+
+##Arctiid Diversity (Fisher's alpha) Floristic Model
+Arctiid.floristic <- lmer(Arctiine_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth)
+summary(Arctiid.floristic)
+
+
+install.packages("cowplot")
+library(cowplot)
+
+G.UCom <- ggplot(covar_moth, aes(x=UnderComplex, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Understory Complexity") + ylab("Geometrid alpha Diversity") + theme_
+
+G.CC <- ggplot(covar_moth, aes(x=CanopyCover, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Canopy Cover (%)") + ylab("")
+
+G.VCom <- ggplot(covar_moth, aes(x=VerticalComplex, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Vertical Complexity") + ylab("")
+
+plot_grid(G.UCom, G.CC, G.VCom, ncol=3, nrow=1)
+
+A.UCom <- ggplot(covar_moth, aes(x=UnderComplex, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Understory Complexity") + ylab("Arctiine alpha Diversity") 
+
+A.CC <- ggplot(covar_moth, aes(x=CanopyCover, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Canopy Cover (%)") + ylab("")
+
+A.VCom <- ggplot(covar_moth, aes(x=VerticalComplex, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Vertical Complexity") + ylab("")
+
+plot_grid(A.UCom, A.CC, A.VCom, ncol=3, nrow=1)
+
+G.VDiv <- ggplot(covar_moth, aes(x=VegDiversity, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant alpha Diversity") + ylab("Geometrid alpha Diversity") 
+
+G.VDen <- ggplot(covar_moth, aes(x=VegDensity, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Density") + ylab("")
+
+G.NMDS1 <- ggplot(covar_moth, aes(x=NMDS1, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS1") + ylab("Geometrid alpha Diversity")
+
+G.NMDS2 <- ggplot(covar_moth, aes(x=NMDS2, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS2") + ylab("")
+
+plot_grid(G.VDiv, G.VDen, G.NMDS1, G.NMDS2, ncol=2, nrow=2)
+
+A.VDiv <- ggplot(covar_moth, aes(x=VegDiversity, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant alpha Diversity") + ylab("Arctiine alpha Diversity")
+
+A.VDen <- ggplot(covar_moth, aes(x=VegDensity, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Density") + ylab("")
+
+A.NMDS1 <- ggplot(covar_moth, aes(x=NMDS1, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS1") + ylab("Arctiine alpha Diversity")
+
+A.NMDS2 <- ggplot(covar_moth, aes(x=NMDS2, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS2") + ylab("")
+
+plot_grid(A.VDiv, A.VDen, A.NMDS1, A.NMDS2, ncol=2, nrow=2)
+
+

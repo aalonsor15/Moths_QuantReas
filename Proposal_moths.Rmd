@@ -1,26 +1,26 @@
 ---
 title: "Vegetation drivers of moth assemblages within a tropical agricultural landscape"
 author: "Aura Alonso-Rodriguez, Lily Shapiro and Ben Camber"
-date: "10/30/2019"
+date: "12/03/2019"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 ---
-### Background
+# Abstract
 
-Land use change, and specifically agricultural expansion, is recognized globally as one of the major drivers of biodiversity loss. The expansion of African oil palm is specifically threatening, since the tropical areas suitable for oil palm are particularly rich in biodiversity and endemism. There is vast evidence of the severe impacts of oil palm expansion in Southeast Asia, where more than 85% of oil palm is cultivated, mostly by means of primary and secondary forest destruction. Yet due to increasing food and biodiesel demands, oil palm is becoming a major threat in the Neotropics as well. Countries like Costa Rica, Colombia, Guatemala and Brazil, are experiencing increasing land conversion to oil palm, turning previously heterogeneous agricultural matrices into extensive monocultures that support significantly less biodiversity.
+# Introduction
 
-The South Pacific region of Costa Rica has grown in oil palm area during the last two decades. Evidence has already shown significant decreases in amphibians, reptiles, bats and insect diversity within these plantations, when compared to adjacent primary forests. In Alonso-Rodriguez et al (2017), moth assemblages were seen to severely degrade in oil palm plantations when compared to primary and young secondary forests. Two moth taxa (Geometridae and Erebidae-Arctiinae, Lepidoptera) showed similar distributions along the disturbance gradient, which was partially explained by plant diversity and vegetation structure. However, which vegetation parameters had a bigger influence on observed distribution patterns and how they differ between moth taxa was not further explored by the authors. Taking into account the differences in life history between geometrid and arctiine moths (such as host-plant preferences, chemical defenses, camouflage, flight capacity, among others), their responses to structural or floristic vegetation features could help us better explore the potential of predicting diversity and turnover rates of these groups in human-dominated landscapes.
+Land use change, and specifically agricultural expansion, is recognized globally as one of the major drivers of biodiversity loss. The expansion of African oil palm is specifically threatening, since the tropical areas suitable for oil palm are particularly rich in biodiversity and endemism. There is vast evidence of the severe impacts of oil palm expansion in Southeast Asia, where more than 85% of oil palm is cultivated, mostly by means of primary and secondary forest deforestation. Yet due to increasing food and biodiesel demands, oil palm is becoming a major threat in the Neotropics as well. Countries like Costa Rica, Colombia, Guatemala and Brazil, are experiencing increasing land conversion to oil palm, turning previously heterogeneous agricultural matrices into extensive monocultures that support significantly less biodiversity.
 
-### Study Questions
+The expansion of African oil palm plantations in the Neotropics represents an immense challenge to the conservation of tropical biodiversity.  In particular, insects in and around these plantations are easily disturbed by associated deforestation and increased use of agrochemicals. Their complex life cycles and trophic specificity are often ill-suited for large spatial-scale changes in canopy cover, plant species diversity, and forest structure. Conservation efforts in these threatened ecosystems can be more efficient and effective by understanding the complex ecological interactions that occur within them. Therefore, isolating important variables such as the most vulnerable life stage of an endangered species, the most ecotoxic pollutants contaminating a wetland, or the least resilient taxon in a disturbed ecosystem is critical to making useful change. 
 
-1. Are structural or floristic features superior predictors of small-scale gradients in moth species composition in relation to land-use intensity?
-2. Are responses similar in the two moth groups, despite some major differences in prime life-history traits of these moth taxa?
+The South Pacific region of Costa Rica has grown in oil palm area during the last two decades. Evidence has already shown significant decreases in amphibians, reptiles, bats and insect diversity within these plantations, when compared to adjacent primary forests. In Alonso-Rodriguez et al (2017), moth assemblages were seen to severely degrade in oil palm plantations when compared to primary and young secondary forests. Two moth taxa (Geometridae and Erebidae-Arctiinae, Lepidoptera) showed similar distributions along the disturbance gradient, which was partially explained by plant diversity and vegetation structure. However, which vegetation parameters had a bigger influence on observed distribution patterns and how they differ between moth taxa was not further explored by the authors. 
 
-### Justification
+Geometridae and Arctiinae share much of their ranges worldwide, but have very different life history strategies. Geometridae larval fitness is largely derived from their highly effective mimicry of leaves and twigs. On the other hand, Arctiinae larvae are often conspicuous or aposomatic and have formidable spines or urticating hairs for defense against a wide variety of predators. The adults of these moth taxa have life histories differing in a similar way; Geometridae are poor fliers and mimic tree bark, while Arctiinae are strong fliers and mimic wasps or possess threatening coloration. Geometridae are also known for preferring woody plant hosts, while there is a wide variety of host plant preferences within Arctiinae. Taking into account the differences in life history between geometrid and arctiine, their responses to structural or floristic vegetation features could help us better explore the potential of predicting diversity and turnover rates of these groups in human-dominated landscapes. 
 
-Conservation efforts are made more efficient and effective by understanding quantitative relationships in complex ecological systems. Therefore, isolating important variables such as the most vulnerable life stage of an endangered species, the most ecotoxic pollutants contaminating a wetland, or the least resilient taxon in a disturbed ecosystem is critical to making useful change. African oil palm plantations in the neotropics represent an immense challenge to the stability of tropical rainforest ecology. In particular, insects in and around these plantations are easily disturbed by the deforestation and establishment of the african oil palm monoculture. Their complex life cycles and trophic specificity are often ill-suited for large spatial-scale changes in canopy cover, plant species diversity, and vertical complexity. Within class Insecta, however, some taxa are more resilient than others. Geometridae and Arctiinae (Lepidoptera) share much of their ranges worldwide, but have very different life history strategies. We predict that modelling will reveal that vegetation variables will have drastically different effects on the success of these taxa. Geometridae larval fitness is largely derived from their highly effective mimicry of leaves and twigs. On the other hand, Arctiinae larvae are often conspicuous or aposomatic and have formidable spines or urticating hairs for defense against a wide variety of predators. The adults of these moth taxa have life histories differing in a similar way; Geometridae are poor fliers and mimic tree bark, while Arctiinae are strong fliers and mimic wasps or possess threatening coloration. Evidence suggests that... Establishing that superficially similar taxa have inherently different responses to disturbance is crucial for informing conservation policy not only in the case of Geometridae and Arctiinae, but in many other cryptic or non-charismatic taxa worldwide. 
+In this study, we ask the following questions: 1) Are structural or floristic features superior predictors of moth species diversity within a habitat disturbance gradient? and 2) Are responses similar in the two moth groups, despite some major differences in prime life-history traits of these moth taxa? We predict that modelling will reveal that vegetation variables will have drastically different effects on the success of these taxa. Establishing that superficially similar taxa have inherently different responses to disturbance is crucial for informing conservation policy not only in the case of Geometridae and Arctiinae, but in many other cryptic or non-charismatic taxa worldwide.
+
 
 ### Data
 
@@ -40,39 +40,17 @@ Conservation efforts are made more efficient and effective by understanding quan
   + Canopy cover
   + Tree basal area
 
-### Proposed methods
 
-* Generation of Multiple Linear Regression and Redundancy Analysis models to relate moth diversity to floristic diversity and vegetation structure across habitats using PC's (from initial PCA) generated from vegetation structure and diversity data as predictor variables in the MLR and RA
-
-* Utilize alpha diversity calculations from species data (from each geometrid and arctiine data sets). 
-
-* Components of MLR models determined via a-priori approach/ from the calculated statistical significance of PC components for floristic and structural elements independently. 
-
-* MLR Models can then be compared via AIC (Akaike's Information Criterion). 
-
-* Simplified AIC methodologies could also be utilized- models of singular floristic or structural elements or combinations between the two could be chosen a-priori and the quality of that models could be assessed using either AIC/BIC or related methods.
-
-* Data available on vegetation structure in a variety of site types includes vegetation density, understory density, understory complexity, undergrowth cover, vertical complexity, canopy cover, and tree basal area. Floristic features for vegetation includes plant species richness and plant species diversity. Site type (FI, FM, YSF, and OPP) could also be integrated into the models and tested for significance in explaining the diversity of the two groups.
-
-
-Reminder: Add references
-```{r}
-setwd("C:/Users/PC/Documents/R/Moths_QuantReas")
-library(corrplot)
-Mothveg <- read.csv('Mothveg.csv')
-PCorr <- cor(Mothveg,use="complete.obs", method = "pearson")
-SCorr <- cor(Mothveg,use="complete.obs", method = "spearman")
-
-corrplot(PCorr,method="square",order="hclust",type="upper",main="Pearson Correlation")
-corrplot(SCorr,method="square",order="hclust",type="upper",main="Spearman Correlation")
-```
-We used the Pearson and Spearman methods to determine correlation between the vegetation parameters. We determined that a floristic model could safely include the following parameters since they lack strong correlations: plant species diversity, vegetation density, and a plant composition matrix. We also found that a structural model could include the following  parameters: understory complexity, canopy coverage, and vertical complexity.
 
 
 
 ## Calculating Fisher's alpha Diversity Index for Geometridae and Arctiinae
 
-```{r}
+```{r, echo=FALSE}
+
+#install.packages("vegan")
+library(vegan)
+
 G_matrix <- read.csv('Geo_site_matrix.csv')
 G_fisher <- fisher.alpha(G_matrix) 
 G_fisher <- as.data.frame(G_fisher)
@@ -87,46 +65,190 @@ write.table(A_fisher, file="A_div.csv",sep=",",row.names=F)
 ```
 
 
-# Extracting the NMDS axis coordinates for the plant species matrix, to used as proxy for plant species composition
+# Extracting the NMDS axis coordinates for the plant species matrix, to be used as proxy for plant species composition
 
 ```{r}
-plants <- read.csv("Plant_matrix.csv")
 
-library("vegan")
-library("MASS")
+plants <- read.csv("Plant_matrix.csv")
+habitat <- read.csv("Habitat.csv")
+
+#install.packages("MASS")
+library(MASS)
 
 PlantsOrd <- metaMDS(plants,distance = "bray", k = 3,trymax=100)
 PlantsOrd
+
+cols <- c("green", "blue", "red", "orange")
+plot(PlantsOrd, type = "n")
+points(PlantsOrd, col = cols[habitat$Habitat], pch = 16)
+legend("topright", legend=levels(habitat$Habitat), bty = "n", col=cols, pch = 16)
 
 #Extract NMDS axis scores
 nms_axis <- scores(PlantsOrd, choices=c(1,2))
 write.table(nms_axis, file="Plant_nms_axis.csv",sep=",",row.names=F)
 ```
 
-#Writing Floristic/Structural GLM Models for Arctiinae and Geometridae
+
+# Pearson correlation coefficients between all independent variables
 
 ```{r}
-##Arctiid Diversity (Fisher's alpha) Structural Model
+#install.packages("corrplot")
+library(corrplot)
+corr <- read.csv('covar4corr.csv')
+
+PCorr <- cor(corr,use="complete.obs", method = "pearson")
+
+corrplot(PCorr,method="square",order="hclust",type="upper")
+```
+We used the Pearson coefficients to determine correlation between the vegetation parameters. We determined that a floristic model could safely include the following parameters since they lack strong correlations: plant species diversity, vegetation density, and a plant composition matrix. We also found that a structural model could include the following  parameters: understory complexity, canopy coverage, and vertical complexity.
+
+
+
+# Modeling alpha diversity of Geometridae against structural parameters and plotting relationships
+```{r}
+
 covar_moth <- read.csv("covar_moth.csv")
 
-Arctiid.structural <- as.formula(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex)
-Arctiid.structural.model <- glm(Arctiid.structural, data=covar_moth)
-summary(Arctiid.structural.model)
+#Checking for normality of response variables
+shapiro.test(covar_moth$Geometrid_FisherIndex) #is not normal
+shapiro.test(covar_moth$Arctiine_FisherIndex)  #is normal
+
+#install.packages("fitdistrplus")
+library(fitdistrplus)
+
+#Checking for how Geometrid diversity data is distributed
+descdist(covar_moth$Geometrid_FisherIndex) #gamma distribution    
+
+#install.packages("lme4")
+library(lme4)
+
+#install.packages("lmerTest")
+library(lmerTest)
 
 ##Geometrid Diversity (Fisher's alpha) Structural Model
-Geometrid.structural <- as.formula(Geometrid_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex)
-Geometrid.structural.model <- glm(Geometrid.structural, data=covar_moth)
-summary(Geometrid.structural.model)
+Geometrid.structural <- glmer(Geometrid_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log))
+summary(Geometrid.structural)
 
-##Arctiid Diversity (Fisher's alpha) Floristic Model
-Arctiid.floristic <- as.formula(Arctiine_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2)
-Arctiid.floristic.model <- glm(Arctiid.floristic, data=covar_moth)
-summary(Arctiid.floristic.model)
+#install.packages("cowplot")
+library(cowplot)
 
-##Geometrid Diversity (Fisher's alpha) Floristic Model
-Geometrid.floristic <- as.formula(Geometrid_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2)
-Geometrid.floristic.model <- glm(Geometrid.floristic, data=covar_moth)
-summary(Geometrid.floristic.model)
+#install.packages("ggplot2")
+library(ggplot2)
+
+G.UCom <- ggplot(covar_moth, aes(x=UnderComplex, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Understory Complexity") + ylab("Geometrid alpha Diversity") 
+
+G.CC <- ggplot(covar_moth, aes(x=CanopyCover, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Canopy Cover (%)") + ylab("")
+
+G.VCom <- ggplot(covar_moth, aes(x=VerticalComplex, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Vertical Complexity") + ylab("")
+
+plot_grid(G.UCom, G.CC, G.VCom, ncol=3, nrow=1)
+
 
 ```
 
+
+# Modeling alpha diversity of Arctiinae against structural parameters and plotting relationships
+
+```{r}
+##Arctiid Diversity (Fisher's alpha) Structural Model
+Arctiid.structural <- lmer(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth)
+summary(Arctiid.structural)
+
+A.UCom <- ggplot(covar_moth, aes(x=UnderComplex, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Understory Complexity") + ylab("Arctiine alpha Diversity") 
+
+A.CC <- ggplot(covar_moth, aes(x=CanopyCover, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Canopy Cover (%)") + ylab("")
+
+A.VCom <- ggplot(covar_moth, aes(x=VerticalComplex, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Vertical Complexity") + ylab("")
+
+plot_grid(A.UCom, A.CC, A.VCom, ncol=3, nrow=1)
+```
+
+
+# Modeling alpha diversity of Geometridae against floristic parameters and plotting relationships
+
+```{r}
+
+##Geometrid Diversity (Fisher's alpha) Floristic Model
+Geometrid.floristic <- glmer(Geometrid_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log))
+summary(Geometrid.floristic)
+
+G.VDiv <- ggplot(covar_moth, aes(x=VegDiversity, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant alpha Diversity") + ylab("Geometrid alpha Diversity") 
+
+G.VDen <- ggplot(covar_moth, aes(x=VegDensity, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Density") + ylab("")
+
+G.NMDS1 <- ggplot(covar_moth, aes(x=NMDS1, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS1") + ylab("Geometrid alpha Diversity")
+
+G.NMDS2 <- ggplot(covar_moth, aes(x=NMDS2, y=log(Geometrid_FisherIndex))) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS2") + ylab("")
+
+plot_grid(G.VDiv, G.VDen, G.NMDS1, G.NMDS2, ncol=2, nrow=2)
+```
+
+
+
+# Modeling alpha diversity of Arctiinae against floristic parameters and plotting relationships
+
+```{r}
+
+##Arctiid Diversity (Fisher's alpha) Floristic Model
+Arctiid.floristic <- lmer(Arctiine_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth)
+summary(Arctiid.floristic)
+
+A.VDiv <- ggplot(covar_moth, aes(x=VegDiversity, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant alpha Diversity") + ylab("Arctiine alpha Diversity")
+
+A.VDen <- ggplot(covar_moth, aes(x=VegDensity, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Density") + ylab("")
+
+A.NMDS1 <- ggplot(covar_moth, aes(x=NMDS1, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS1") + ylab("Arctiine alpha Diversity")
+
+A.NMDS2 <- ggplot(covar_moth, aes(x=NMDS2, y=Arctiine_FisherIndex)) +
+  geom_point(size=2, shape=19)+
+  geom_smooth(method = "lm", se=FALSE) + scale_colour_discrete()+
+  xlab("Plant Composition NMDS2") + ylab("")
+
+plot_grid(A.VDiv, A.VDen, A.NMDS1, A.NMDS2, ncol=2, nrow=2)
+
+```
+
+
+
+
+
+###References
