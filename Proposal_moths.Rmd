@@ -21,6 +21,16 @@ Geometridae and Arctiinae share much of their ranges worldwide, but have very di
 
 In this study, we ask the following questions: 1) Are structural or floristic features superior predictors of moth species diversity within a habitat disturbance gradient? and 2) Are responses similar in the two moth groups, despite some major differences in prime life-history traits of these moth taxa? We predict that modelling will reveal that vegetation variables will have drastically different effects on the success of these taxa. Establishing that superficially similar taxa have inherently different responses to disturbance is crucial for informing conservation policy not only in the case of Geometridae and Arctiinae, but in many other cryptic or non-charismatic taxa worldwide.
 
+# Methods
+
+Alonso-Rodriguez et al. (2013) surveyed moth diversity, plant diversity, and physical forest parameters at 20 sites in the Gulfo Dolce region in southwestern Costa Rica. We calculated Fisher’s Alpha diversity index for the moths at each site. Because the plant diversity data had been used previously to compare habitat types in a non-metric multidimensional scaling (NMDS) analysis, we were able to use the captured variation of the NMDS axes 1 and 2 as components of our models. 
+In order to select physical vegetation parameters for the structural and floristic models, we used the cor and corrplot functions in R to ensure none of the selected variables were more than 60% correlated. Once it was established that neither model had strongly correlated variables, our models were as follows:
+Floristic: NMDS1, NMDS2, plant species diversity, vegetation density
+Structural: Understory complexity, canopy coverage, and vertical complexity
+We examined the distribution of the moth diversity using the Shapiro-Wilkes normality test, which showed that while Arctiinae distribution was normal, Geometridae was not.  The R descdist function (fitdistrplus package, Comprehensive R Archive Network) revealed that Geometridae were more consistent with gamma distribution.  For this reason, we used linear mixed (LMER) models for Arctiinae and generalized mixed (GLMER) models for Geometridae. 
+
+
+
 
 ### Data
 
@@ -56,7 +66,7 @@ G_fisher <- fisher.alpha(G_matrix)
 G_fisher <- as.data.frame(G_fisher)
 
 A_matrix <- read.csv('Arc_site_matrix.csv')
-A_fisher <- fisher.alpha(A_matrix) #Error: doesn't run even thought its the same code as for geometrids
+A_fisher <- fisher.alpha(A_matrix) 
 A_fisher <- as.data.frame(A_fisher)
 
 #export data to csv
@@ -72,7 +82,7 @@ write.table(A_fisher, file="A_div.csv",sep=",",row.names=F)
 plants <- read.csv("Plant_matrix.csv")
 habitat <- read.csv("Habitat.csv")
 
-#install.packages("MASS")
+install.packages("MASS")
 library(MASS)
 
 PlantsOrd <- metaMDS(plants,distance = "bray", k = 3,trymax=100)
