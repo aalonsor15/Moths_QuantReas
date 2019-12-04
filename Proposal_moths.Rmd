@@ -3,9 +3,9 @@ title: "Vegetation drivers of moth assemblages within a tropical agricultural la
 author: "Aura Alonso-Rodriguez, Lily Shapiro and Ben Camber"
 date: "12/03/2019"
 output:
-  pdf_document: default
   html_document:
     df_print: paged
+  pdf_document: default
 ---
 # Abstract
 
@@ -82,7 +82,7 @@ write.table(A_fisher, file="A_div.csv",sep=",",row.names=F)
 plants <- read.csv("Plant_matrix.csv")
 habitat <- read.csv("Habitat.csv")
 
-install.packages("MASS")
+#install.packages("MASS")
 library(MASS)
 
 PlantsOrd <- metaMDS(plants,distance = "bray", k = 3,trymax=100)
@@ -165,6 +165,7 @@ plot_grid(G.UCom, G.CC, G.VCom, ncol=3, nrow=1)
 
 ```
 
+Results from our generalized mixed effect model (Geometridae) and linear mixed effect model (Arctiinae) showed high variation in the correlation between floristic and structural parameters on alpha diversity of each group. The geometrid structural model displayed no significant correlation between the listed structural parameters (understory complexity, canopy cover, and vertical complexity), showing that geometrid diversity is likely not a function of structural forest variables in these study sites. 
 
 # Modeling alpha diversity of Arctiinae against structural parameters and plotting relationships
 
@@ -190,7 +191,7 @@ A.VCom <- ggplot(covar_moth, aes(x=VerticalComplex, y=Arctiine_FisherIndex)) +
 
 plot_grid(A.UCom, A.CC, A.VCom, ncol=3, nrow=1)
 ```
-
+The arctiin model showed little to no relationship between the aforementioned structural variables and alpha diversity within this clade. However, the large output value for habitat as a controlled random effect (97.289) suggests this component plays a significant role in dictating patterns of arctiin diversity.
 
 # Modeling alpha diversity of Geometridae against floristic parameters and plotting relationships
 
@@ -222,7 +223,7 @@ G.NMDS2 <- ggplot(covar_moth, aes(x=NMDS2, y=log(Geometrid_FisherIndex))) +
 
 plot_grid(G.VDiv, G.VDen, G.NMDS1, G.NMDS2, ncol=2, nrow=2)
 ```
-
+Conversely to the output of the structural models, the floristic models returned significant correlations between select parameters (vegetation diversity, vegetation density, NMDS 1 + 2) and diversity measures. Variance of random effects (moonlight and habitat) were inconsequential in the geometrid floristic model, while vegetation diversity appears to have a very significant effect on moth alpha diversity (the greatest correlation between diversity and parameters out of all tested models). This result is paralleled with similar studies that discovered a significant relationship between geometrid diversity and vegetation diversity (particularly understory vegetation) *citations*. Results of this model also support a relationship between each of the NMDS axes and geometrid diversity. Negative correlations between each of the NMDS axes and diversity are consistent with the NMDS output, where habitats are clustered at lower values along the x-axis, and represent a greater proportion of diversity
 
 
 # Modeling alpha diversity of Arctiinae against floristic parameters and plotting relationships
@@ -256,7 +257,17 @@ A.NMDS2 <- ggplot(covar_moth, aes(x=NMDS2, y=Arctiine_FisherIndex)) +
 plot_grid(A.VDiv, A.VDen, A.NMDS1, A.NMDS2, ncol=2, nrow=2)
 
 ```
+The arctiin floristic model showed an increased value for habitat as a random effect, similarly to the arctiin structural model. Arctiin alpha diversity was again correlated with vegetation diversity (as with the geometrid floristic model), although not as strongly. NMDS1, but not NMDS2, also displayed a significant negative relationship with diversity. As only oil palm plantations are located at higher values along NMDS1 (which are not very diverse habitats), this correlation is also sensible.  
 
+
+
+```{r}
+AIC(Geometrid.structural,Geometrid.floristic)
+AIC(Arctiid.structural, Arctiid.floristic)
+```
+
+
+AIC was used to compare the strength of floristic and structural models for each clade, although this measurement is likely skewed due to the presence of random effects (affects definition of degrees of freedom *citation*. AIC ranked the geometrid floristic model higher than the geometrid structural model, in correspondence with the apparent high significance of the effect of vegetation diversity, and each NMDS component on diversity, in contrast with the failure of structural parameters to adequately describe geometrid diversity patterns. By contrast, the arctiin structural model was ranked higher than the corresponding floristic model, but this may be due to the large effect of habitat acting in the background.  
 
 
 
