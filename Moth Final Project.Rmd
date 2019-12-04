@@ -111,8 +111,10 @@ nms_axis <- scores(PlantsOrd, choices=c(1,2))
 ## Pearson correlation coefficients between all independent variables
 
 ```{r, echo=FALSE, warning = FALSE}
+
 #install.packages("corrplot")
 library(corrplot)
+
 corr <- read.csv('covar4corr.csv')
 
 PCorr <- cor(corr,use="complete.obs", method = "pearson")
@@ -285,6 +287,7 @@ The arctiine floristic model showed an increased value for habitat as a random e
 ### Using AIC to compare the floristic and structural models for each moth group
 
 ```{r, echo=FALSE, warning = FALSE}
+
 AIC(Geometrid.structural,Geometrid.floristic)
 AIC(Arctiid.structural, Arctiid.floristic)
 ```
