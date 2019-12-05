@@ -6,6 +6,8 @@ output:
   pdf_document: default
   html_document:
     df_print: paged
+editor_options: 
+  chunk_output_type: console
 ---
 # Abstract
 
@@ -86,7 +88,7 @@ A_fisher <- as.data.frame(A_fisher)
 
 ## Extracting the NMDS axis coordinates for the plant species matrix, to be used as proxy for plant species composition
 
-```{r, echo=FALSE, warning = FALSE}
+```{r, echo=FALSE, warning = FALSE,message=F,results=F}
 
 plants <- read.csv("Plant_matrix.csv")
 habitat <- read.csv("Habitat.csv")
@@ -95,7 +97,11 @@ habitat <- read.csv("Habitat.csv")
 library(MASS)
 
 PlantsOrd <- metaMDS(plants,distance = "bray", k = 3,trymax=100)
-PlantsOrd
+#PlantsOrd
+
+```
+
+```{r}
 
 cols <- c("green", "blue", "red", "orange")
 plot(PlantsOrd, type = "n")
@@ -106,7 +112,6 @@ legend("topright", legend=levels(habitat$Habitat), bty = "n", col=cols, pch = 16
 nms_axis <- scores(PlantsOrd, choices=c(1,2))
 #write.table(nms_axis, file="Plant_nms_axis.csv",sep=",",row.names=F)
 ```
-
 
 ## Pearson correlation coefficients between all independent variables
 
@@ -298,6 +303,27 @@ AIC was used to compare the strength of floristic and structural models for each
 # Discussion
 
 coming soon
+
+
+# Easton comments
+
+- You don't need this for the class project, but eventually you should add more citations in the introduction
+- Good job in the introduction setting up why this work is important and how you plan on building on Alonso-Rodriguez et al. (2017). I also like how you ended the section with a list of questions and predictions. 
+- I would break up your methods into subsections
+- You don't need to do this for the class project, but for a final manuscript, you will need to do some residual analyses to make sure you are meeting your modeling assumptions
+- I split one of your R code chunks in order to suppress the model output but to retain a plot
+
+
+
+What I need from you for the final version: 
+
+- Clarify what data you averaged together. I believe you averaged all the data within a site for all the different months. Is this true?
+- add appropriate figure captions
+- Break up your methods into subsections (e.g. study site, data collection, models)
+- No need to add to the discussion section at this point
+
+
+
 
 
 # References
