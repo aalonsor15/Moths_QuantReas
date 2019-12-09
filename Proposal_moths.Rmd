@@ -143,7 +143,7 @@ We used the Pearson coefficients to determine correlation between the vegetation
 
 
 # Modeling alpha diversity of Geometridae against structural parameters and plotting relationships
-```{r}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 4: Geometridae structural model, showing the correlations between geometrid Fisher's alpha and understory complexity, canopy cover (%) and vertical complexity."}
 
 covar_moth <- read.csv("covar_moth.csv")
 
@@ -197,7 +197,7 @@ Results from our generalized mixed effect model (Geometridae) and linear mixed e
 
 # Modeling alpha diversity of Arctiinae against structural parameters and plotting relationships
 
-```{r}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 5: Arctiinae structural model, showing the correlations between arctiine Fisher's alpha and understory complexity, canopy cover (%) and vertical complexity."}
 ##Arctiid Diversity (Fisher's alpha) Structural Model
 Arctiid.structural <- lmer(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth)
 summary(Arctiid.structural)
@@ -223,7 +223,7 @@ The arctiin model showed little to no relationship between the aforementioned st
 
 # Modeling alpha diversity of Geometridae against floristic parameters and plotting relationships
 
-```{r}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 6: Geometridae floristic model, showing the correlations between geometrid Fisher's alpha and plant alpha diversity, plant density,and plant composition non-metric multidimensional scaling axes 1 and 2. "}
 
 ##Geometrid Diversity (Fisher's alpha) Floristic Model
 Geometrid.floristic <- glmer(Geometrid_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log))
@@ -256,7 +256,7 @@ Conversely to the output of the structural models, the floristic models returned
 
 # Modeling alpha diversity of Arctiinae against floristic parameters and plotting relationships
 
-```{r}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 7: Arctiinae floristic model, showing the correlations between arctiine Fisher's alpha and plant alpha diversity, plant density,and plant composition non-metric multidimensional scaling axes 1 and 2. "}
 
 ##Arctiid Diversity (Fisher's alpha) Floristic Model
 Arctiid.floristic <- lmer(Arctiine_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth)
@@ -299,7 +299,6 @@ AIC was used to compare the strength of floristic and structural models for each
 
 
 # Discussion
-
 coming soon
 
 
