@@ -101,7 +101,7 @@ PlantsOrd <- metaMDS(plants,distance = "bray", k = 3,trymax=100)
 
 ```
 
-```{r, fig.cap="Non-metric multidimensional scaling (NMDS) plot derived from matrix of plant species composition across multiple sites. X and Y Axes represent similarity in the composition among sites, with points colored by site type (FI=forest interior, FM=forest margin, OPP=oil palm plantation, YSF= young secondary forest)"}
+```{r, fig.cap="Non-metric multidimensional scaling (NMDS) plot derived from matrix of plant species composition across multiple sites. X and Y Axes represent similarity in the composition among sites, with points colored by site type (FI=forest interior, FM=forest margin, OPP=oil palm plantation, YSF= young secondary forest)."}
 
 cols <- c("green", "blue", "red", "orange")
 plot(PlantsOrd, type = "n")
@@ -115,7 +115,7 @@ nms_axis <- scores(PlantsOrd, choices=c(1,2))
 
 ## Pearson correlation coefficients between all independent variables
 
-```{r, echo=FALSE, warning = FALSE, fig.cap="Correlation plot created using Pearson coefficients describing relationship between all listed floristic and structural parameters measured across sites"}
+```{r, echo=FALSE, warning = FALSE, fig.cap="Correlation plot created using Pearson coefficients describing relationship between all listed floristic and structural parameters measured across sites."}
 
 #install.packages("corrplot")
 library(corrplot)
@@ -136,7 +136,7 @@ Results from our generalized mixed-effects model (Geometridae) and linear mixed-
 
 ### Evaluating distribution of moth diversity data
 
-```{r, echo=FALSE, warning = FALSE, fig.cap="Cullen and Frey graph depicting the appropriateness of theoretical distributions for model application given an input observation. Graph was interpreted according to the methodology of Cullen and Frey (1999) and Delignette-Muller (2014)"}
+```{r, echo=FALSE, warning = FALSE, fig.cap="Cullen and Frey graph depicting the appropriateness of theoretical distributions for model application given an input observation. Graph was interpreted according to the methodology of Cullen and Frey (1999) and Delignette-Muller & Dutang (2015)."}
 
 
 covar_moth <- read.csv("covar_moth.csv")
@@ -299,7 +299,7 @@ AIC(Geometrid.structural,Geometrid.floristic)
 AIC(Arctiid.structural, Arctiid.floristic)
 ```
 
-AIC was used to compare the strength of floristic and structural models for each clade, although this measurement is likely skewed due to the presence of random effects (affects definition of degrees of freedom, *citation*). AIC ranked the geometrid floristic model higher than the geometrid structural model, in correspondence with the apparent high significance of plant diversity and composition, compared to the failure of structural parameters to adequately describe geometrid diversity patterns. By contrast, the arctiine structural model was ranked higher than the corresponding floristic model, but this may be due to the large effect of habitat acting in the background.  
+AIC was used to compare the strength of floristic and structural models for each clade, although this measurement is likely skewed due to the presence of random effects (affects definition of degrees of freedom (Jiang et al., 2008). AIC ranked the geometrid floristic model higher than the geometrid structural model, in correspondence with the apparent high significance of plant diversity and composition, compared to the failure of structural parameters to adequately describe geometrid diversity patterns. By contrast, the arctiine structural model was ranked higher than the corresponding floristic model, but this may be due to the large effect of habitat acting in the background.  
 
 
 # Discussion
@@ -334,9 +334,17 @@ Alonso-Rodríguez, A. M., Finegan, B., & Fiedler, K. (2017). Neotropical moth as
 
 Axmacher, J. C., Brehm, G., Hemp, A., Tünte, H., Lyaruu, H. V., Müller‐Hohenstein, K., & Fiedler, K. (2009). Determinants of diversity in afrotropical herbivorous insects (Lepidoptera: Geometridae): plant diversity, vegetation structure or abiotic factors?. Journal of Biogeography, 36(2), 337-349.
 
+Axmacher, J. C., Liu, Y., Wang, C., Li, L., & Yu, Z. (2011). Spatial α-diversity patterns of diverse insect taxa in Northern China: Lessons for biodiversity conservation. Biological Conservation, 144(9), 2362–2368. 
+
 Beck, J., Brehm, G., & Fiedler, K. (2011). Links between the environment, abundance and diversity of Andean moths. Biotropica, 43(2), 208-217.
 
 Beck, J. A. N., Schulze, C. H., Linsenmair, K. E., & Fiedler, K. (2002). From forest to farmland: diversity of geometrid moths along two habitat gradients on Borneo. Journal of tropical ecology, 18(1), 33-51.
+
+Brehm, G., Homeier, J., & Fiedler, K. (2003). Beta diversity of geometrid moths (Lepidoptera: Geometridae) in an Andean montane rainforest. Diversity and Distributions, 9(5), 351–366. 
+
+Cullen, A. C., Frey, H. C., & Frey, C. H. (1999). Probabilistic techniques in exposure assessment: a handbook for dealing with variability and uncertainty in models and inputs. Springer Science & Business Media.
+
+Delignette-Muller M.L. and Dutang C. (2015). fitdistrplus: An R Package for Fitting Distributions. Journal of Statistical Software, 64(4), 1-34.
 
 Fuentes-Montemayor, E., Goulson, D., Cavin, L., Wallace, J. M., & Park, K. J. (2012). Factors influencing moth assemblages in woodland fragments on farmland: Implications for woodland management and creation schemes. Biological Conservation, 153, 265-275.
 
@@ -344,5 +352,9 @@ Gray, R. E., Slade, E. M., Chung, A. Y., & Lewis, O. T. (2019). Movement of moth
 
 Hilt, N., & Fiedler, K. (2005). Diversity and composition of Arctiidae moth ensembles along a successional gradient in the Ecuadorian Andes. Diversity and Distributions, 11(5), 387-398.
 
-Jiang, J., Rao, J., Gu, Z., & Nguyen, T. (2008). FENCE METHODS FOR MIXED MODEL SELECTION. The Annals of Statistics, 36(4), 1669–1692.((Ober, H., & Hayes, J. (2010). Determinants of nocturnal Lepidopteran diversity and community structure in a conifer-dominated forest. Biodiversity and Conservation, 19(3), 761–774.
+Jiang, J., Rao, J., Gu, Z., & Nguyen, T. (2008). FENCE METHODS FOR MIXED MODEL SELECTION. The Annals of Statistics, 36(4), 1669–1692.
+
+Ober, H., & Hayes, J. (2010). Determinants of nocturnal Lepidopteran diversity and community structure in a conifer-dominated forest. Biodiversity and Conservation, 19(3), 761–774.
+
+
 
