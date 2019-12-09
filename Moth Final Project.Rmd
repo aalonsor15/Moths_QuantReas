@@ -101,7 +101,7 @@ PlantsOrd <- metaMDS(plants,distance = "bray", k = 3,trymax=100)
 
 ```
 
-```{r}
+```{r, fig.cap="Non-metric multidimensional scaling (NMDS) plot derived from matrix of plant species composition across multiple sites. X and Y Axes represent similarity in the composition among sites, with points colored by site type (FI=forest interior, FM=forest margin, OPP=oil palm plantation, YSF= young secondary forest)"}
 
 cols <- c("green", "blue", "red", "orange")
 plot(PlantsOrd, type = "n")
@@ -115,17 +115,18 @@ nms_axis <- scores(PlantsOrd, choices=c(1,2))
 
 ## Pearson correlation coefficients between all independent variables
 
-```{r, echo=FALSE, warning = FALSE}
+```{r, echo=FALSE, warning = FALSE, fig.cap="Correlation plot created using Pearson coefficients describing relationship between all listed floristic and structural parameters measured across sites"}
 
 #install.packages("corrplot")
 library(corrplot)
-
+ 
 corr <- read.csv('covar4corr.csv')
 
 PCorr <- cor(corr,use="complete.obs", method = "pearson")
 
 corrplot(PCorr,method="square",order="hclust",type="upper")
 ```
+
 We used the Pearson coefficients to determine correlation between the vegetation parameters. We determined that a floristic model could safely include the following parameters since they lack strong correlations: plant species diversity, vegetation density, and a plant species composition matrix (NMDS1 and NMDS2). We also found that a structural model could include the following  parameters: understory complexity, canopy cover, and vertical complexity.
 
 
@@ -135,7 +136,8 @@ Results from our generalized mixed-effects model (Geometridae) and linear mixed-
 
 ### Evaluating distribution of moth diversity data
 
-```{r, echo=FALSE, warning = FALSE}
+```{r, echo=FALSE, warning = FALSE, fig.cap="Cullen and Frey graph depicting the appropriateness of theoretical distributions for model application given an input observation. Graph was interpreted according to the methodology of Cullen and Frey (1999) and Delignette-Muller (2014)"}
+
 
 covar_moth <- read.csv("covar_moth.csv")
 
