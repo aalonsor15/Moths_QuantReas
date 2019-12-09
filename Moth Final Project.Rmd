@@ -168,7 +168,7 @@ descdist(covar_moth$Geometrid_FisherIndex) #gamma distribution
 The Shapiro Wilk Test revealed that the Arctiinae diversity data is normally distributed. So, we used linear mixed models (lmer function in R) for all Arctiinae models, which assume that the data is normally distributed (Gaussian distribution). For Geometridae however, Shapiro-Wilks test revealed that the data is not normally distributed, and the descdist function identified it as having a gamma distribution. For this reason, we used generalized mixed models (glmer function in R) for all Geometridae models, which allow for specifying the distribution of data with non-Gaussian distributions.
 
 ### Geometridae diversity against structural parameters
-```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 4: Geometridae structural model, showing the correlations between geometrid Fisher's alpha and understory complexity, canopy cover (%) and vertical complexity."}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Geometridae structural model, showing the correlations between geometrid Fisher's alpha and understory complexity, canopy cover (%) and vertical complexity."}
 
 #install.packages("lme4")
 library(lme4)
@@ -210,7 +210,7 @@ The geometrid structural model displayed no significant correlation between the 
 
 ### Arctiinae diversity against structural parameters
 
-```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 5: Arctiinae structural model, showing the correlations between arctiine Fisher's alpha and understory complexity, canopy cover (%) and vertical complexity."}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Arctiinae structural model, showing the correlations between arctiine Fisher's alpha and understory complexity, canopy cover (%) and vertical complexity."}
 
 ##Arctiid Diversity (Fisher's alpha) Structural Model
 Arctiid.structural <- lmer(Arctiine_FisherIndex ~ UnderComplex + CanopyCover + VerticalComplex + (1|Moonlight) + (1|Habitat), data = covar_moth)
@@ -238,7 +238,7 @@ The arctiine structural model showed little to no relationship between the afore
 
 ### Geometridae diversity against floristic parameters
 
-```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 6: Geometridae floristic model, showing the correlations between geometrid Fisher's alpha and plant alpha diversity, plant density,and plant composition non-metric multidimensional scaling axes 1 and 2. "}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Geometridae floristic model, showing the correlations between geometrid Fisher's alpha and plant alpha diversity, plant density,and plant composition non-metric multidimensional scaling axes 1 and 2. "}
 
 ##Geometrid Diversity (Fisher's alpha) Floristic Model
 Geometrid.floristic <- glmer(Geometrid_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth, family=Gamma(link=log))
@@ -272,7 +272,7 @@ Conversely to the output of the structural models, the floristic models returned
 
 ### Arctiinae diversity against floristic parameters
 
-```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Figure 7: Arctiinae floristic model, showing the correlations between arctiine Fisher's alpha and plant alpha diversity, plant density,and plant composition non-metric multidimensional scaling axes 1 and 2. "}
+```{r, warning=FALSE,echo = FALSE, message=FALSE, fig.cap = "Arctiinae floristic model, showing the correlations between arctiine Fisher's alpha and plant alpha diversity, plant density,and plant composition non-metric multidimensional scaling axes 1 and 2. "}
 
 ##Arctiid Diversity (Fisher's alpha) Floristic Model
 Arctiid.floristic <- lmer(Arctiine_FisherIndex ~ VegDiversity + VegDensity + NMDS1 + NMDS2 + (1|Moonlight) + (1|Habitat), data = covar_moth)
