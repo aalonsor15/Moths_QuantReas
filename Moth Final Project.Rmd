@@ -347,7 +347,7 @@ Alonso-Rodríguez, A. M., Finegan, B., & Fiedler, K. (2017). Neotropical moth as
 
 Axmacher, J. C., Brehm, G., Hemp, A., Tünte, H., Lyaruu, H. V., Müller‐Hohenstein, K., & Fiedler, K. (2009). Determinants of diversity in afrotropical herbivorous insects (Lepidoptera: Geometridae): plant diversity, vegetation structure or abiotic factors?. Journal of Biogeography, 36(2), 337-349.
 
-Axmacher, J. C., Liu, Y., Wang, C., Li, L., & Yu, Z. (2011). Spatial α-diversity patterns of diverse insect taxa in Northern China: Lessons for biodiversity conservation. Biological Conservation, 144(9), 2362–2368. 
+Axmacher, J. C., Liu, Y., Wang, C., Li, L., & Yu, Z. (2011). Spatial a-diversity patterns of diverse insect taxa in Northern China: Lessons for biodiversity conservation. Biological Conservation, 144(9), 2362–2368. 
 
 Beck, J., Brehm, G., & Fiedler, K. (2011). Links between the environment, abundance and diversity of Andean moths. Biotropica, 43(2), 208-217.
 
