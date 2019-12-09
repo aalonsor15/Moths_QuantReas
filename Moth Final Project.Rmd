@@ -340,6 +340,8 @@ Beck, J., Brehm, G., & Fiedler, K. (2011). Links between the environment, abunda
 
 Beck, J. A. N., Schulze, C. H., Linsenmair, K. E., & Fiedler, K. (2002). From forest to farmland: diversity of geometrid moths along two habitat gradients on Borneo. Journal of tropical ecology, 18(1), 33-51.
 
+Brehm, G., & Axmacher, J. C. (2006). A comparison of manual and automatic moth sampling methods (Lepidoptera: Arctiidae, Geometridae) in a rain forest in Costa Rica. Environmental Entomology, 35(3), 757-764.
+
 Brehm, G., Homeier, J., & Fiedler, K. (2003). Beta diversity of geometrid moths (Lepidoptera: Geometridae) in an Andean montane rainforest. Diversity and Distributions, 9(5), 351–366. 
 
 Cullen, A. C., Frey, H. C., & Frey, C. H. (1999). Probabilistic techniques in exposure assessment: a handbook for dealing with variability and uncertainty in models and inputs. Springer Science & Business Media.
@@ -351,6 +353,8 @@ Fuentes-Montemayor, E., Goulson, D., Cavin, L., Wallace, J. M., & Park, K. J. (2
 Gray, R. E., Slade, E. M., Chung, A. Y., & Lewis, O. T. (2019). Movement of moths through riparian reserves within oil palm plantations. bioRxiv, 204990.
 
 Hilt, N., & Fiedler, K. (2005). Diversity and composition of Arctiidae moth ensembles along a successional gradient in the Ecuadorian Andes. Diversity and Distributions, 11(5), 387-398.
+
+Holdridge, L. R., & Grenke, W. C. (1971). Forest environments in tropical life zones: a pilot study. Forest environments in tropical life zones: a pilot study. Pergamon Press, Oxford.
 
 Jiang, J., Rao, J., Gu, Z., & Nguyen, T. (2008). FENCE METHODS FOR MIXED MODEL SELECTION. The Annals of Statistics, 36(4), 1669–1692.
 
