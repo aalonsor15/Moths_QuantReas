@@ -57,6 +57,7 @@ Since the tree species composition matrix could not be feasibly included in our 
 We grouped the independent variables mentioned above as either structural or floristic parameters. In order to select the final parameters to keep in our structural and floristic models, we first used the cor and corrplot functions in R to evaluate which variables were autocorrelated (higher than 0.6 correlation coefficient). From correlated variables, we decided which ones to keep based on published literature on moth biology and life history. Our final models were as follows:
 
 ### Structural Models
+fhfhfhf
 
 Geometrid alpha diversity ~ understory complexity + canopy cover + vertical complexity
 
